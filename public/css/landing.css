@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(120deg, #4f46e5, #9333ea);
+    color: white;
+    height: 100vh;
+}
+
+/* NAVBAR */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+}
+
+.nav-links a {
+    margin-left: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: rgb(66, 150, 17);
+    color: #ffffff;
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* LOGO */
+/* .hero-logo {
+    width: 120px;
+    animation: float 4s ease-in-out infinite;
+} */
+
+.hero-section {
+    background-image: url('../images/logo.png');
+    background-size: cover;
+    background-position: center;
+    height: 900px;
+    opacity: 0.2;
+    animation: float 4s ease-in-out infinite;
+}
+
+
+/* FLOATING WORDS */
+.floating-words span {
+    position: absolute;
+    opacity: 0.2;
+    font-size: 40px;
+    animation: float 6s infinite alternate;
+}
+
+.floating-words span:nth-child(1) { top: 20%; left: 10%; }
+.floating-words span:nth-child(2) { top: 30%; right: 15%; }
+.floating-words span:nth-child(3) { bottom: 25%; left: 20%; }
+.floating-words span:nth-child(4) { bottom: 20%; right: 20%; }
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 15px;
+    opacity: 0.6;
+}
+
+/* ANIMATION */
+@keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-20px); }
+}

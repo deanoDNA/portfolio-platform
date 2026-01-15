@@ -1,0 +1,26 @@
+@extends('layouts.dashboard')
+
+@section('content')
+@php
+$currentStep = 2;
+@endphp
+
+<div class="max-w-4xl mx-auto bg-white rounded shadow p-6 space-y-6">
+    @include('portfolio.steps.progress')
+
+    <form method="POST" action="{{ route('portfolio.storeStep2') }}">
+        @csrf
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium">Skills</label>
+                <textarea name="skills" rows="4" class="w-full border rounded px-3 py-2">{{ old('skills', $portfolio->skills ?? '') }}</textarea>
+            </div>
+
+            <div class="flex justify-between mt-4">
+                <a href="{{ route('portfolio.step1') }}" class="px-4 py-2 border rounded text-sm">Back</a>
+                <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded">Next</button>
+            </div>
+        </div>
+    </form>
+</div>
+@endsection
