@@ -5,20 +5,25 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\DashboardController;
-
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PublicPortfolioController;
 
+// --------------------------
 // Landing page
+// --------------------------
 Route::get('/', function () {
     return view('landing.home');
 })->name('landing');
 
+// --------------------------
 // Public APIs
+// --------------------------
 Route::get('/regions/{country}', [LocationController::class, 'regions'])->name('regions.byCountry');
 Route::get('/districts/{region}', [LocationController::class, 'districts'])->name('districts.byRegion');
 
+// --------------------------
 // Authenticated routes
+// --------------------------
 Route::middleware(['auth'])->group(function () {
 
     // Dashboard
@@ -39,7 +44,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/portfolio/edit', [PortfolioController::class, 'update'])->name('portfolio.update');
     Route::post('/portfolio/update-photo', [PortfolioController::class, 'updatePhoto'])->name('portfolio.updatePhoto');
 
+    // --------------------------
     // Multi-step portfolio creation
+    // --------------------------
     Route::prefix('portfolio')->group(function () {
 
         // Step 1
@@ -66,7 +73,9 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-// Public Portfolio view
+// --------------------------
+// Public portfolio
+// --------------------------
 Route::get('/@{username}', [PortfolioController::class, 'show'])->name('portfolio.show');
 Route::get('/public-portfolio/{portfolio}', [PublicPortfolioController::class, 'show'])->name('portfolio.public');
 
